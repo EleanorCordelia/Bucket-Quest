@@ -7,10 +7,12 @@ import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import BucketQ from "@/assets/BucketQ.png"
 import { isLoggedin, logOut } from "@/utils/user"
+import { useLocalStorage } from "@uidotdev/usehooks"
 
 
 
 export default function NavBar() {
+  const [name,] = useLocalStorage('name', 'Guest')
   return (
     <nav className="fixed inset-x-0 top-0 z-50 bg-white shadow-sm dark:bg-gray-950/90">
       <div className="w-full max-w-7xl mx-auto px-4">
@@ -25,38 +27,28 @@ export default function NavBar() {
           </Link>
           <nav className="hidden md:flex gap-4">
             <Link
-              to="#"
+              to="/"
               className="font-medium flex items-center text-sm transition-colors hover:underline"
             >
               Home
             </Link>
             <Link
-              to="#"
+              to="/booking"
               className="font-medium flex items-center text-sm transition-colors hover:underline"
             >
-              About
+              Bookings
             </Link>
             <Link
-              to="#"
+              to="/cafe"
               className="font-medium flex items-center text-sm transition-colors hover:underline"
             >
-              Services
-            </Link>
-            <Link
-              to="#"
-              className="font-medium flex items-center text-sm transition-colors hover:underline"
-            >
-              Contact
+              Cafe
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             {isLoggedin() && (
               <>
-              <Link to="/">
-                <Button variant="outline" size="sm">
-                    Dashboard
-                </Button>
-              </Link>
+              <span className="text-sm">{name}</span>
               <Button size="sm" onClick={() => logOut()}>
                   Logout
               </Button>

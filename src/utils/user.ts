@@ -1,5 +1,6 @@
 export const isLoggedin = () => {
-    return !!localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    return !!token && token !== '""';
 };
 export const logOut = () => {
     localStorage.removeItem('token');

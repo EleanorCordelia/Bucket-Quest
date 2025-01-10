@@ -57,7 +57,6 @@ export function LoginForm({
         variant: "default",
         title: "Login berhasil",
         description: "Anda berhasil login",
-        action: <ToastAction altText="Try again">Try again</ToastAction>,
       })
       setToken(result.data.token)
       setName(result.data.name)

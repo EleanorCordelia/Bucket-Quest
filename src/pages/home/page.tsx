@@ -14,13 +14,6 @@ import {
   } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import {
-    Collapsible,
-    CollapsibleContent,
-  } from "@/components/ui/collapsible"
-import { useState } from "react";
-import { ChevronsUpDown } from "lucide-react"
-import AdvancedFilter from "@/components/advanced-filter";
 import SurferImage from '@/assets/surfer.jpeg';
 import RedVanImage from '@/assets/red-van.jpeg';
 import BikiniImage from '@/assets/bikini.jpeg';
@@ -46,72 +39,71 @@ const brands = [
 const testimonials = [
     {
       quote:
-        "Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur. In fugiat Lorem sit velit id veniam esse eiusmod non ea voluptate cupidatat reprehenderit ullamco dolore. Mollit laborum occaecat aliquip.",
-      name: "Rose Roberson",
-      role: "CEO at Company",
+        "Wow, this is insanely cool! I usually ask around for vendor info when I want to go snorkeling in Bali, but now I can do it with just one click. Highly recommended!",
+      name: "Thalita Zahra",
+      role: "CEO of CafeLink",
       imgSrc: "https://i.pravatar.cc/120?img=1",
     },
     {
       quote:
-        "Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation. Culpa consectetur dolor pariatur commodo aliqua amet tempor nisi enim deserunt elit cillum.",
-      name: "Chace Rodgers",
-      role: "CEO at Company",
+        "Planning my trip has never been this easy. I just filtered my preferences, and BucketQuest gave me the perfect package. Absolutely loved it!",
+      name: "Aththariq",
+      role: "CEO of IzinSakit",
       imgSrc: "https://i.pravatar.cc/120?img=10",
     },
     {
       quote:
-        "Id duis velit enim officia ad nisi incididunt magna ex dolor minim deserunt dolor.",
-      name: "Cornelius Sheppard",
-      role: "CEO at Company",
+        "BucketQuest takes all the hassle out of vacation planning. I especially loved the recommendations, it felt like they knew exactly what I wanted!",
+      name: "Rania",
+      role: "CEO of Plan International",
       imgSrc: "https://i.pravatar.cc/120?img=9",
     },
     {
       quote:
-        "Consectetur voluptate pariatur dolore laboris. Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.",
-      name: "Chace Rodgers",
-      role: "CEO at Company",
+        "I usually spend hours comparing prices and activities, but with BucketQuest, everything is laid out for me in minutes. Such a game-changer!",
+      name: "George Hendrata",
+      role: "CEO of Tiket.com",
       imgSrc: "https://i.pravatar.cc/120?img=7",
     },
     {
       quote:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur voluptate pariatur dolore laboris. Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.",
-      name: "Cornelius Sheppard",
-      role: "CEO at Company",
+        "I love how user-friendly BucketQuest is. It’s like having a personal travel assistant in my pocket. Highly recommended for anyone who loves to explore!",
+      name: "Vico Lomar",
+      role: "CEO of Fore Coffee",
       imgSrc: "https://i.pravatar.cc/120?img=8",
     },
     {
       quote:
-        "Consectetur voluptate pariatur dolore laboris. Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.",
-      name: "Chace Rodgers",
-      role: "CEO at Company",
+        "The perfect solution for busy travelers. BucketQuest let me plan a family trip to Bali in just a few clicks. Everything was organized so well!",
+      name: "Patrick Walujo",
+      role: "CEO of GOTO",
       imgSrc: "https://i.pravatar.cc/120?img=2",
     },
     {
       quote:
-        "Id duis velit enim officia ad nisi incididunt magna ex dolor minim deserunt dolor.",
-      name: "Cornelius Sheppard",
-      role: "CEO at Company",
+        "Wow, the package looks super exciting! The activities and destination are just perfect for an unforgettable adventure. Definitely adding this to my bucket list!",
+      name: "Valent Williandre",
+      role: "CEO of GEM",
       imgSrc: "https://i.pravatar.cc/120?img=3",
     },
   ];
 
 const faqs = [
     {
+        question: 'How do I get my package?',
+        answer: 'Search for Ubud, set a minimum budget of 700,000 for one person or 1,300,000 for two people, and look for adventure-type packages.'
+    },
+    {
         question: 'How do I book a trip?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.'
+        answer: 'To book a trip, search for your desired destination, filter your preferences, and click "Book Now" to confirm your selection.'
     },
     {
-        question: 'How do I cancel a trip?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.'
-    },
-    {
-        question: 'How do I get a refund?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.'
+        question: 'How do I find cafe recommendations near my travel destination?',
+        answer: 'Open the Cafe page and use the search filters provided by CafeLink.'
     },
 ]
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
         <div className="mt-14">
@@ -125,27 +117,7 @@ export default function Home() {
                 <div className="pt-14 pb-8 lg:pb-16">
                     
                     <div className="flex justify-center items-center w-full">
-                        <BigSearchBar /> 
-                        <Button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="rounded-full p-7"
-                        >
-                            Filter
-                            <ChevronsUpDown />
-                        </Button>
-                    </div>
-                    <div className="block justify-center text w-full">
-                    <Collapsible
-                        open={isOpen}
-                        onOpenChange={setIsOpen}
-                        >
-                        <div className="flex items-center justify-between space-x-4 px-4">
-                            
-                        </div>
-                            <CollapsibleContent className="space-y-2">
-                                <AdvancedFilter />
-                            </CollapsibleContent>
-                        </Collapsible>
+                        <BigSearchBar />
                     </div>
                 </div>
             </div>
