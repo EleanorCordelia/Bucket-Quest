@@ -64,8 +64,8 @@ export default function DetailTrip() {
         if (result.data) {
             toast({
                 variant: "default",
-                title: "Login berhasil",
-                description: "Anda berhasil login",
+                title: "Booking berhasil",
+                description: "Data Booking berhasil disimpan",
             })
             navigate(`/booking`);
         }

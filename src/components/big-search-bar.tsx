@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import useActivityType from "@/hooks/useActivityType";
 import { useEffect, useState } from "react";
 import { ActivityType } from "@/types/ActivityType";
+import { isLoggedin } from "@/utils/user";
 
 const FormSchema = z.object({
     name: z.string(),
@@ -27,7 +28,7 @@ export function BigSearchBar() {
         resolver: zodResolver(FormSchema),
         defaultValues: {
             name: "",
-            location: "",
+            location: "Ubud",
             activityType: 0,
             budget: 1000000,
             participants: 1,
@@ -46,7 +47,12 @@ export function BigSearchBar() {
         fetchActivityType();
     }, []);
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        navigate(`/trip/search?name=${data.name}&location=${data.location}&activityType=${data.activityType}&budget=${data.budget}&participants=${data.participants}`);
+        if (!isLoggedin()){
+            navigate('/login');
+        }
+        else {
+            navigate(`/trip/search?name=${data.name}&location=${data.location}&activityType=${data.activityType}&budget=${data.budget}&participants=${data.participants}`);
+        }
     }
     return (
         <Form {...form}>
